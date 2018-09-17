@@ -1,0 +1,34 @@
+.text-center {
+    text-height: 50%;
+    text-align: center;
+}
+
+.about-margin{
+  margin-top: 20px;
+}
+
+.opacity{
+  height: 350px;
+  width: 250px;
+}
+
+.links{
+  height: 350px;
+  width: 250px;
+}
+
+.untitled{
+  height: 300px;
+  width: 250px;
+  margin-left: 5px;
+}
+
+.release{
+  height: 300px;
+  width: 250px;
+  margin-left: 50px;
+}
+
+.margin{
+  margin-top: 5px;
+}
