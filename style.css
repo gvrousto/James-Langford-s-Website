@@ -1,34 +1,35 @@
-.text-center {
-    text-height: 50%;
-    text-align: center;
+.nav-column{
+  margin-top: 50px;
+  text-align: right;
 }
 
-.about-margin{
-  margin-top: 20px;
+.top-filler{
+  height: 50px;
 }
 
-.opacity{
-  height: 350px;
-  width: 250px;
+.center-image{
+  margin-top: 100px;
+  text-align: center;
 }
 
 .links{
-  height: 350px;
-  width: 250px;
-}
-
-.untitled{
-  height: 300px;
-  width: 250px;
+  height: 400px;
+  width: 350px;
   margin-left: 5px;
 }
 
-.release{
-  height: 300px;
-  width: 250px;
-  margin-left: 50px;
+.details{
+  height: 590px;
 }
 
-.margin{
-  margin-top: 5px;
+.icons{
+  text-align: center;
+}
+
+.footer{
+  text-align: center;
+}
+
+.footer-text{
+  margin-top: 10px;
 }
