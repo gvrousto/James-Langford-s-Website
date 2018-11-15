@@ -64,5 +64,5 @@ app.get('/directory/:id', (req,res) =>{
     }
     res.send(directoryList.directories[index]);
 });
-
-app.listen(3000, () => console.log(`I'm listening on port 3000`));
+let port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`I'm listening on port 3000`));
