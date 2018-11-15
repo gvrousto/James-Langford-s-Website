@@ -44,13 +44,25 @@ directories.forEach((directory)=>{
       directoryList.activeItem++;
       let images = fs.readdirSync(`./public/Content/Directories/${directory}`);
       images.forEach((imageName) =>{
-          let img = new Image(imageName, `./Content/Directories/${directory}/${imageName}`);
+          let img = new Image(imageName, `/Content/Directories/${directory}/${imageName}`);
           dir.addImage(img);
       });
 });
 
 app.get('/directories', (req, res) => {
   res.send(directoryList);
+});
+
+app.get('/directory-detail/:id', (req,res) => {
+  res.sendFile(`directory-detail/directory-detail.html`, { root: 'public'});
+});
+
+app.get('/directory/:id', (req,res) =>{
+    let index = parseInt(req.params.id);
+    if(index >= directoryList.activeItem || index < 0){
+      res.status(401).send({message: 'invalid index'});
+    }
+    res.send(directoryList.directories[index]);
 });
 
 app.listen(3000, () => console.log(`I'm listening on port 3000`));
