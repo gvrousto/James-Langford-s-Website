@@ -23,7 +23,7 @@
   function displayItems(directoryList) {
     console.log(directoryList.directories);
     directoryList.directories.forEach((item) => displayItem(item));
-    directoryList.directories.forEach((item) => makeModal(item));
+    //directoryList.directories.forEach((item) => makeModal(item));
   }
 
   function displayItem(item){
