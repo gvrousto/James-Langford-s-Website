@@ -33,7 +33,8 @@ i:hover{
 }
 
 #sub-header-text{
-  margin-left: 12px;
+  margin-left: 10px;
+  font-size: 15px;
 }
 
 #sub-header-text:hover{
