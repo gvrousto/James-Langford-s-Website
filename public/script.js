@@ -1,9 +1,9 @@
 (function(){
   var urlParams = new URLSearchParams(window.location.search);
   let promise;
-  let modalArray = [];
   let currentDirectoryCounter = 0;
   let slideIndex = 0;
+  let lazyLoad = 0;
 
   promise = fetch(`/directories`);
   promise
@@ -23,8 +23,7 @@
   function displayItems(directoryList) {
     console.log(directoryList.directories);
     directoryList.directories.forEach((item) => displayItem(item));
-    directoryList.directories.forEach((item) => makeModal(item));
-
+    //directoryList.directories.forEach((item) => makeModal(item));
   }
 
   function displayItem(item){
@@ -127,6 +126,9 @@
   }
 
   function closeModal(n){
+    if(lazyLoad === 0){
+
+    }
     document.getElementById(`myModal${n}`).style.display = "none";
     slideIndex = 0;
   }
