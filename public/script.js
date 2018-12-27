@@ -103,29 +103,6 @@
     console.log(modal);
   }
 
-/*
-    <!-- The Modal/Lightbox -->
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="img1_wide.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">2 / 4</div>
-      <img src="img2_wide.jpg" style="width:100%">
-    </div>
-
-    <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
-</div>
-*/
-
   function addSlides(item){
     let modalContent = document.getElementById(`myModalContent${currentDirectoryCounter}`);
 
