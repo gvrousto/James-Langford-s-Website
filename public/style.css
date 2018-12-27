@@ -9,7 +9,6 @@
   margin-top: 40px;
 }
 
-
 h3:hover {
   color: blue;
   font-weight: bold;
@@ -36,9 +35,9 @@ i:hover{
 #sub-header-text:hover{
   cursor: default;
 }
+
 .entire-container{
   margin-top: 25px;
-  /*height: 800px;*/
 }
 
 #buttonGroup{
@@ -139,15 +138,16 @@ i:hover{
 /* Next & previous buttons */
 .prev,
 .next {
+  color: white;
   cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 35px;
+  padding: 30px;
   margin-top: -50px;
   color: white;
   font-weight: bold;
-  font-size: 70px;
+  font-size: 60px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
