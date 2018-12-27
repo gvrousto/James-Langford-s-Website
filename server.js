@@ -57,6 +57,11 @@ app.get('/directory-detail/:id', (req,res) => {
   res.sendFile(`directory-detail/directory-detail.html`, { root: 'public'});
 });
 
+app.get('/calendar', (req,res) => {
+  res.sendFile(`calendar/calendar.html`, { root: 'public'});
+
+});
+
 app.get('/directory/:id', (req,res) =>{
     let index = parseInt(req.params.id);
     if(index >= directoryList.activeItem || index < 0){
@@ -64,5 +69,4 @@ app.get('/directory/:id', (req,res) =>{
     }
     res.send(directoryList.directories[index]);
 });
-let port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`I'm listening on port 3000`));
+app.listen(process.env.PORT || 5000, () => console.log(`I'm listening on port 5000`));
