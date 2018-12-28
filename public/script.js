@@ -32,7 +32,7 @@
 
     let i = document.createElement("img");
     i.src = item.images[0].src;
-    i.setAttribute("width", "500px");
+    i.setAttribute("width", "700px");
     i.setAttribute("margin-left", "50px")
     i.classList.add('displayImg');
     imageDiv.appendChild(i);
