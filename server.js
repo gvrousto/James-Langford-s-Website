@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const AWS = require('aws-sdk');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -8,7 +9,30 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 const config = require('./config.js');
 
+AWS.config.update({
+    accessKeyId: config.AWSAccessKeyId,
+    secretAccessKey: config.AWSSecretKey
+  });
 
+let s3 = new AWS.S3();
+const listDirectories = params => {
+  return new Promise ((resolve, reject) => {
+    const s3params = {
+      Bucket: config.BucketName,
+      MaxKeys: 20,
+      Prefix: 'Content/Directories',
+      Delimiter: '',
+    };
+    s3.listObjectsV2 (s3params, (err, data) => {
+      if (err) {
+        reject (err);
+      }
+      console.log(data);
+    });
+  });
+};
+
+listDirectories();
 
 class Image{
   constructor(name, src){
@@ -38,8 +62,6 @@ class DirectoryContainer{
   }
 }
 
-console.log(config);
-
 const directoryList = new DirectoryContainer();
 
 let directories = fs.readdirSync('./public/Content/Directories');
@@ -49,7 +71,7 @@ directories.forEach((directory)=>{
       directoryList.activeItem++;
       let images = fs.readdirSync(`./public/Content/Directories/${directory}`);
       images.forEach((imageName) =>{
-          let img = new Image(imageName, `/Content/Directories/${directory}/${imageName}`);
+          let img = new Image(imageName, `https://s3.us-east-2.amazonaws.com/jimmylangford/Content/Directories/${directory}/${imageName}`);
           dir.addImage(img);
       });
 });
