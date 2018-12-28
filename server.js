@@ -1,11 +1,14 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+const config = require('./config.js');
+
+
 
 class Image{
   constructor(name, src){
@@ -34,6 +37,8 @@ class DirectoryContainer{
     this.directories.push(Item);
   }
 }
+
+console.log(config);
 
 const directoryList = new DirectoryContainer();
 
