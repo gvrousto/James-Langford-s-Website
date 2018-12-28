@@ -3,7 +3,6 @@
   let promise;
   let currentDirectoryCounter = 0;
   let slideIndex = 0;
-  let lazyLoad = 0;
 
   promise = fetch(`/directories`);
   promise
@@ -21,18 +20,23 @@
   }
 
   function displayItems(directoryList) {
-    console.log(directoryList.directories);
     directoryList.directories.forEach((item) => displayItem(item));
     directoryList.directories.forEach((item) => makeModal(item));
   }
 
   function displayItem(item){
+    let posterImage;
+    if(item.images[0].src.includes('.txt')){
+      posterImage = 0;
+    }else{
+      posterImage = 1;
+    }
     const mainDiv = document.getElementById('main-content-container');
     let imageDiv = document.createElement('div');
 
     let i = document.createElement("img");
-    i.src = item.images[0].src;
-    i.setAttribute("width", "700px");
+    i.src = item.images[posterImage].src;
+    i.setAttribute("width", "800px");
     i.setAttribute("margin-left", "50px")
     i.classList.add('displayImg');
     imageDiv.appendChild(i);
@@ -46,7 +50,6 @@
     imageDiv.appendChild(h);
     imageDiv.onclick = () => {
             openModal(item.id);
-            //window.location.href=`/directory-detail/${item.id}`;
     }
 
     mainDiv.appendChild(imageDiv);
@@ -97,8 +100,6 @@
     modal.appendChild(prev);
     modal.appendChild(next);
 
-
-    console.log(modal);
   }
 
   function addSlides(item){
@@ -120,24 +121,18 @@
 
   function openModal(n){
     document.getElementById(`myModal${n}`).style.display = "block";
-    console.log(n);
     showSlide(n, 0);
   }
 
   function closeModal(n){
-    if(lazyLoad === 0){
-
-    }
     document.getElementById(`myModal${n}`).style.display = "none";
     slideIndex = 0;
   }
 
   function showSlide(modalNum, slideNum){
     let slides = document.getElementsByClassName(`mySlides${modalNum}`);
-    console.log(slides);
     if (slideNum > slides.length - 1) {slideIndex = 0}
     if (slideNum < 0) {slideIndex = slides.length - 1}
-    console.log(slideIndex);
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }

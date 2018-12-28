@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-/*const config = require('./config.js');
+const config = require('./config.js');
 
 AWS.config.update({
     accessKeyId: config.AWSAccessKeyId,
@@ -20,20 +20,25 @@ const listDirectories = params => {
     const s3params = {
       Bucket: config.BucketName,
       MaxKeys: 20,
-      Prefix: 'Content/Directories',
-      Delimiter: '',
+      Prefix: 'Contents/',
+      Delimiter: '/',
     };
     s3.listObjectsV2 (s3params, (err, data) => {
       if (err) {
         reject (err);
       }
       console.log(data);
+      data['Contents'].forEach((item)=>printItem(item));
     });
   });
 };
 
 listDirectories();
-*/
+
+function printItem(item){
+  console.log(item['Key']);
+}
+
 class Image{
   constructor(name, src){
       this.name = name;
