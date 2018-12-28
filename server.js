@@ -7,13 +7,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-//const config = require('./config.js');
+/*const config = require('./config.js');
 
 AWS.config.update({
     accessKeyId: config.AWSAccessKeyId,
     secretAccessKey: config.AWSSecretKey
   });
-/*
+
 let s3 = new AWS.S3();
 const listDirectories = params => {
   return new Promise ((resolve, reject) => {
