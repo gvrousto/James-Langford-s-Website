@@ -9,36 +9,6 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 const config = require('./config.js');
 
-AWS.config.update({
-    accessKeyId: config.AWSAccessKeyId,
-    secretAccessKey: config.AWSSecretKey
-  });
-
-let s3 = new AWS.S3();
-const listDirectories = params => {
-  return new Promise ((resolve, reject) => {
-    const s3params = {
-      Bucket: config.BucketName,
-      MaxKeys: 20,
-      Prefix: 'Contents/',
-      Delimiter: '/',
-    };
-    s3.listObjectsV2 (s3params, (err, data) => {
-      if (err) {
-        reject (err);
-      }
-      console.log(data);
-      data['Contents'].forEach((item)=>printItem(item));
-    });
-  });
-};
-
-listDirectories();
-
-function printItem(item){
-  console.log(item['Key']);
-}
-
 class Image{
   constructor(name, src){
       this.name = name;
@@ -69,17 +39,55 @@ class DirectoryContainer{
 
 const directoryList = new DirectoryContainer();
 
-let directories = fs.readdirSync('./public/Content/Directories');
-directories.forEach((directory)=>{
-      let dir = new Directory(directory, '', directoryList.activeItem);
-      directoryList.addItem(dir);
-      directoryList.activeItem++;
-      let images = fs.readdirSync(`./public/Content/Directories/${directory}`);
-      images.forEach((imageName) =>{
-          let img = new Image(imageName, `https://s3.us-east-2.amazonaws.com/jimmylangford/Content/Directories/${directory}/${imageName}`);
-          dir.addImage(img);
+AWS.config.update({
+    accessKeyId: config.AWSAccessKeyId,
+    secretAccessKey: config.AWSSecretKey
+  });
+
+let s3 = new AWS.S3();
+const listDirectories = params => {
+  return new Promise ((resolve, reject) => {
+    const s3params = {
+      Bucket: config.BucketName,
+      MaxKeys: 20,
+      Prefix: 'Content/Directories/',
+      Delimiter: '/',
+    };
+    s3.listObjectsV2 (s3params, (err, data) => {
+      if (err) {
+        reject (err);
+      }
+      data['CommonPrefixes'].forEach((directory)=>addDirAndImages(directory));
+    });
+  });
+};
+
+listDirectories();
+
+function addDirAndImages(directory){
+  let dir = new Directory(directory['Prefix'], '', directoryList.activeItem);
+  directoryList.addItem(dir);
+  directoryList.activeItem++;
+  return new Promise ((resolve, reject) => {
+    const s3params = {
+      Bucket: config.BucketName,
+      MaxKeys: 20,
+      Prefix: directory['Prefix'],
+      Delimiter: '',
+    };
+    s3.listObjectsV2 (s3params, (err, data) => {
+      if (err) {
+        reject (err);
+      }
+      let images = data['Contents'];
+      images.forEach((image) =>{
+        let imageName = image['Key'];
+        let img = new Image(imageName, 'https://s3.us-east-2.amazonaws.com/jimmylangford/'+imageName);
+        dir.addImage(img);
       });
-});
+    });
+  });
+}
 
 app.get('/directories', (req, res) => {
   res.send(directoryList);

@@ -25,28 +25,24 @@
   }
 
   function displayItem(item){
-    let posterImage;
-    if(item.images[0].src.includes('.txt')){
-      posterImage = 0;
-    }else{
-      posterImage = 1;
-    }
+    //checks if the first image is the description file and if it is
+    //make a different the poster image
+
     const mainDiv = document.getElementById('main-content-container');
     let imageDiv = document.createElement('div');
 
     let i = document.createElement("img");
-    i.src = item.images[posterImage].src;
-    i.setAttribute("width", "800px");
-    i.setAttribute("margin-left", "50px")
+    i.src = item.images[0].src;
+    i.setAttribute("width", "850px");
+    i.setAttribute("margin-left", "50px");
     i.classList.add('displayImg');
     imageDiv.appendChild(i);
 
-    let h = document.createElement("P")                // Create a <p> element
+    let h = document.createElement("P");                // Create a <p> element
     let t = document.createTextNode(item.name);
     h.appendChild(t);
 
     imageDiv.classList.add('entire-container');
-    //imageDiv.classList.add('shadow');
     imageDiv.appendChild(h);
     imageDiv.onclick = () => {
             openModal(item.id);
