@@ -7,7 +7,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const config = require('./config.js');
+console.log(process.env.PORT);
+let config;
+if(process.env.PORT === undefined){
+   config = require('./config.js');
+}else{
+  config.AWSAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
+  config.AWSSecretKey = process.env.AWS_SECRET_ACCESS_KEY;
+}
 
 class Image{
   constructor(name, src){
