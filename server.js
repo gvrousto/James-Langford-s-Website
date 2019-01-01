@@ -14,6 +14,7 @@ if(process.env.PORT === undefined){
 }else{
   config.AWSAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
   config.AWSSecretKey = process.env.AWS_SECRET_ACCESS_KEY;
+  config.BucketName = process.env.BucketName;
 }
 
 class Image{
@@ -28,6 +29,9 @@ class Directory{
       this.name = name;
       this.images = [];
       this.id = id;
+      this.type = 0;
+      this.shopLink = '';
+      this.description = '';
     }
   addImage(Image){
     this.images.push(Image);
@@ -89,8 +93,23 @@ function addDirAndImages(directory){
       let images = data['Contents'];
       images.forEach((image) =>{
         let imageName = image['Key'];
-        let img = new Image(imageName, 'https://s3.us-east-2.amazonaws.com/jimmylangford/'+imageName);
-        dir.addImage(img);
+        if(imageName.includes('.json')){
+          let params = {Bucket: config.BucketName, Key: imageName};
+          s3.getObject(params, function(err, data) {
+            if (err){
+              console.log(err, err.stack); // an error occurred
+            }
+            else {
+              let obj = JSON.parse(data.Body.toString('utf-8'));
+              dir.description = obj.description;
+              dir.type = obj.type;
+              dir.shopLink = obj.shop;
+            }
+          });
+        }else{
+          let img = new Image(imageName, 'https://s3.us-east-2.amazonaws.com/jimmylangford/'+imageName);
+          dir.addImage(img);
+        }
       });
     });
   });

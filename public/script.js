@@ -30,6 +30,7 @@
 
     const mainDiv = document.getElementById('main-content-container');
     let imageDiv = document.createElement('div');
+    imageDiv.classList.add('imgDiv');
 
     let i = document.createElement("img");
     i.src = item.images[0].src;
@@ -39,16 +40,26 @@
     imageDiv.appendChild(i);
 
     let h = document.createElement("P");                // Create a <p> element
-    let t = document.createTextNode(item.name);
+    let t = document.createTextNode(item.description);
     h.appendChild(t);
+
 
     imageDiv.classList.add('entire-container');
     imageDiv.appendChild(h);
+
     imageDiv.onclick = () => {
             openModal(item.id);
     }
-
     mainDiv.appendChild(imageDiv);
+    if(item.shopLink.length !== 0){
+      let b = document.createElement('BUTTON');
+      let t = document.createTextNode("CLICK ME");       // Create a text node
+      b.appendChild(t);
+      b.onclick = () => {
+        window.location.href = item.shopLink;
+      };
+      mainDiv.appendChild(b);
+    }
   }
 
   function makeModal(item){
