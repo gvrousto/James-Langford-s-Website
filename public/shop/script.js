@@ -4,7 +4,7 @@
   let currentDirectoryCounter = 0;
   let slideIndex = 0;
 
-  promise = fetch(`/directories`);
+  promise = fetch(`/shopDirectories`);
   promise
         .then(res => res.json())
         .then(data => displayItems(data));
@@ -22,6 +22,11 @@
   let galleryLink = document.getElementById('gallery-button');
   galleryLink.onclick = () => {
     window.location.href=`/gallery`;
+  };
+
+  let shopLink = document.getElementById('shop-button');
+  shopLink.onclick = () => {
+    window.location.href=`/shop`;
   };
 
   function displayItems(directoryList) {

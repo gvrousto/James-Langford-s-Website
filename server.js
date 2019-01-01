@@ -8,7 +8,16 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 console.log(process.env.PORT);
-let config;
+
+class Config{
+  constructor(){
+    this.AWSAccessKeyId = '';
+    this.AWSSecretKey = '';
+    this.BucketName = '';
+  }
+}
+
+let config = new Config();
 if(process.env.PORT === undefined){
    config = require('./config.js');
 }else{
@@ -16,6 +25,9 @@ if(process.env.PORT === undefined){
   config.AWSSecretKey = process.env.AWS_SECRET_ACCESS_KEY;
   config.BucketName = process.env.BucketName;
 }
+
+
+
 
 class Image{
   constructor(name, src){
@@ -117,6 +129,24 @@ function addDirAndImages(directory){
 
 app.get('/directories', (req, res) => {
   res.send(directoryList);
+});
+
+app.get('/galleryDirectories', (req, res) =>{
+  let galleryDirectoryList = directoryList;
+  galleryDirectoryList.directories = galleryDirectoryList.directories.filter((dir)=>{
+    return dir.type === 0;
+  });
+  console.log(galleryDirectoryList);
+  res.send(galleryDirectoryList);
+});
+
+app.get('/shopDirectories', (req, res) =>{
+  let galleryDirectoryList = directoryList;
+  galleryDirectoryList.directories = galleryDirectoryList.directories.filter((dir)=>{
+    return dir.type === 1;
+  });
+  console.log(galleryDirectoryList);
+  res.send(galleryDirectoryList);
 });
 
 app.get('/directory-detail/:id', (req,res) => {
