@@ -25,9 +25,7 @@ if(process.env.PORT === undefined){
   config.AWSSecretKey = process.env.AWS_SECRET_ACCESS_KEY;
   config.BucketName = process.env.BucketName;
 }
-
-
-
+console.log(config);
 
 class Image{
   constructor(name, src){
@@ -137,6 +135,7 @@ app.get('/galleryDirectories', (req, res) =>{
     return dir.type === 0;
   });
   console.log(galleryDirectoryList);
+  console.log(directoryList);
   res.send(galleryDirectoryList);
 });
 

@@ -113,19 +113,20 @@
   }
 
   function addSlides(item){
+    console.log(item);
     let modalContent = document.getElementById(`myModalContent${currentDirectoryCounter}`);
+    if(modalContent !== null){
+      let mySlides = document.createElement('div');
+      mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
 
-    let mySlides = document.createElement('div');
-    mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
+      let i = document.createElement("img");
+      i.src = item.src;
+      i.setAttribute("style", "width:100%");
 
 
-    let i = document.createElement("img");
-    i.src = item.src;
-    i.setAttribute("style", "width:100%");
-
-
-    modalContent.appendChild(mySlides);
-    mySlides.appendChild(i);
+      modalContent.appendChild(mySlides);
+      mySlides.appendChild(i);
+    }
 
   }
 
