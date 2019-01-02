@@ -29,6 +29,21 @@
     window.location.href=`/shop`;
   };
 
+  let mcalendarLink = document.getElementById('m-calendar-button');
+  mcalendarLink.onclick = () => {
+    window.location.href=`/calendar`;
+  };
+
+  let mgalleryLink = document.getElementById('m-gallery-button');
+  mgalleryLink.onclick = () => {
+    window.location.href=`/gallery`;
+  };
+
+  let mshopLink = document.getElementById('m-shop-button');
+  mshopLink.onclick = () => {
+    window.location.href=`/shop`;
+  };
+
   function displayItems(directoryList) {
     console.log('display the items');
     directoryList.directories.forEach((item) => displayItem(item));

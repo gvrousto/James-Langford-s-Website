@@ -29,7 +29,23 @@
     window.location.href=`/shop`;
   };
 
+  let mcalendarLink = document.getElementById('m-calendar-button');
+  mcalendarLink.onclick = () => {
+    window.location.href=`/calendar`;
+  };
+
+  let mgalleryLink = document.getElementById('m-gallery-button');
+  mgalleryLink.onclick = () => {
+    window.location.href=`/gallery`;
+  };
+
+  let mshopLink = document.getElementById('m-shop-button');
+  mshopLink.onclick = () => {
+    window.location.href=`/shop`;
+  };
+
   function displayItems(directoryList) {
+    console.log('display the items');
     directoryList.directories.forEach((item) => displayItem(item));
     directoryList.directories.forEach((item) => makeModal(item));
   }
@@ -42,8 +58,6 @@
 
     let i = document.createElement("img");
     i.src = item.images[0].src;
-    i.setAttribute("width", "850px");
-    i.setAttribute("margin-left", "50px");
     i.classList.add('displayImg');
     imageDiv.appendChild(i);
 
@@ -118,20 +132,19 @@
   }
 
   function addSlides(item){
-    console.log(item);
     let modalContent = document.getElementById(`myModalContent${currentDirectoryCounter}`);
-    if(modalContent !== null){
-      let mySlides = document.createElement('div');
-      mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
 
-      let i = document.createElement("img");
-      i.src = item.src;
-      i.setAttribute("style", "width:100%");
+    let mySlides = document.createElement('div');
+    mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
 
 
-      modalContent.appendChild(mySlides);
-      mySlides.appendChild(i);
-    }
+    let i = document.createElement("img");
+    i.src = item.src;
+    i.setAttribute("style", "width:100%");
+
+
+    modalContent.appendChild(mySlides);
+    mySlides.appendChild(i);
 
   }
 
@@ -159,5 +172,4 @@
     slideIndex = slideIndex + increment;
     showSlide(modalNum, slideIndex);
   }
-
 }())

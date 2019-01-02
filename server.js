@@ -7,7 +7,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-console.log(process.env.PORT);
 
 class Config{
   constructor(){
@@ -25,7 +24,6 @@ if(process.env.PORT === undefined){
   config.AWSSecretKey = process.env.AWS_SECRET_ACCESS_KEY;
   config.BucketName = process.env.BucketName;
 }
-console.log(config);
 
 class Image{
   constructor(name, src){
@@ -134,8 +132,6 @@ app.get('/galleryDirectories', (req, res) =>{
   galleryDirectoryList.directories = galleryDirectoryList.directories.filter((dir)=>{
     return dir.type === 0;
   });
-  console.log(galleryDirectoryList);
-  console.log(directoryList);
   res.send(galleryDirectoryList);
 });
 
@@ -144,7 +140,6 @@ app.get('/shopDirectories', (req, res) =>{
   shopDirectoryList.directories = shopDirectoryList.directories.filter((dir)=>{
     return dir.type === 1;
   });
-  console.log(shopDirectoryList);
   res.send(shopDirectoryList);
 });
 
