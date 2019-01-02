@@ -37,8 +37,9 @@ i:hover{
 }
 
 #sub-header-text{
+  margin-top: 0px;
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 #sub-header-text:hover{
