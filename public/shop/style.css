@@ -126,12 +126,14 @@
   /* Next & previous buttons */
   .prev,
   .next {
+    opacity: .4;
     color: white;
+    background-color: white;
     cursor: pointer;
     position: absolute;
     top: 25%;
     width: auto;
-    padding: 30px;
+    padding: 5px;
     margin-top: -50px;
     color: white;
     font-weight: bold;
