@@ -1,3 +1,7 @@
+@media only screen and (max-width: 768px) {
+
+}
+@media only screen and (min-width: 768px) {
 .nav-column{
   overflow: hidden;
   position: fixed;
@@ -210,4 +214,5 @@ img.hover-shadow {
 
 .hover-shadow:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 }

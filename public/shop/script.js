@@ -160,13 +160,4 @@
     slideIndex = slideIndex + increment;
     showSlide(modalNum, slideIndex);
   }
-
-  function displayGallery(){
-    console.log('display gal');
-    promise = fetch(`/gallery`);
-    promise
-          .then(res => res.json())
-          .then(data => console.log(data));
-  }
-
 }())

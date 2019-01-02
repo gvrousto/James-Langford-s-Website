@@ -148,20 +148,9 @@ app.get('/shopDirectories', (req, res) =>{
   res.send(shopDirectoryList);
 });
 
-app.get('/directory-detail/:id', (req,res) => {
-  res.sendFile(`directory-detail/directory-detail.html`, { root: 'public'});
-});
-
 app.get('/calendar', (req,res) => {
   res.sendFile(`calendar/calendar.html`, { root: 'public'});
 
 });
 
-app.get('/directory/:id', (req,res) =>{
-    let index = parseInt(req.params.id);
-    if(index >= directoryList.activeItem || index < 0){
-      res.status(401).send({message: 'invalid index'});
-    }
-    res.send(directoryList.directories[index]);
-});
 app.listen(process.env.PORT || 5000, () => console.log(`I'm listening on port 5000`));
