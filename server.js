@@ -130,7 +130,7 @@ app.get('/directories', (req, res) => {
 });
 
 app.get('/galleryDirectories', (req, res) =>{
-  let galleryDirectoryList = directoryList;
+  let galleryDirectoryList = JSON.parse(JSON.stringify(directoryList));
   galleryDirectoryList.directories = galleryDirectoryList.directories.filter((dir)=>{
     return dir.type === 0;
   });
@@ -140,12 +140,12 @@ app.get('/galleryDirectories', (req, res) =>{
 });
 
 app.get('/shopDirectories', (req, res) =>{
-  let galleryDirectoryList = directoryList;
-  galleryDirectoryList.directories = galleryDirectoryList.directories.filter((dir)=>{
+  let shopDirectoryList = JSON.parse(JSON.stringify(directoryList));
+  shopDirectoryList.directories = shopDirectoryList.directories.filter((dir)=>{
     return dir.type === 1;
   });
-  console.log(galleryDirectoryList);
-  res.send(galleryDirectoryList);
+  console.log(shopDirectoryList);
+  res.send(shopDirectoryList);
 });
 
 app.get('/directory-detail/:id', (req,res) => {

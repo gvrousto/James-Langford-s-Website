@@ -24,6 +24,11 @@
     window.location.href=`/gallery`;
   };
 
+  let shopLink = document.getElementById('shop-button');
+  shopLink.onclick = () => {
+    window.location.href=`/shop`;
+  };
+
   function displayItems(directoryList) {
     console.log('display the items');
     directoryList.directories.forEach((item) => displayItem(item));
