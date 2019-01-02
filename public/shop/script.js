@@ -69,6 +69,7 @@
     imageDiv.appendChild(h);
 
     imageDiv.onclick = () => {
+            console.log(item.id);
             openModal(item.id);
     }
     mainDiv.appendChild(imageDiv);
@@ -84,6 +85,7 @@
   }
 
   function makeModal(item){
+    currentDirectoryCounter = item.id;
     let directoryId = item.id;
 
     let body = document.getElementById('body');
@@ -132,7 +134,7 @@
 
   function addSlides(item){
     let modalContent = document.getElementById(`myModalContent${currentDirectoryCounter}`);
-
+    if(modalContent !== null){
     let mySlides = document.createElement('div');
     mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
 
@@ -144,7 +146,7 @@
 
     modalContent.appendChild(mySlides);
     mySlides.appendChild(i);
-
+  }
   }
 
   function openModal(n){

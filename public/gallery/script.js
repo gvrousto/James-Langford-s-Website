@@ -45,13 +45,11 @@
   };
 
   function displayItems(directoryList) {
-    console.log('display the items');
     directoryList.directories.forEach((item) => displayItem(item));
     directoryList.directories.forEach((item) => makeModal(item));
   }
 
   function displayItem(item){
-
     const mainDiv = document.getElementById('main-content-container');
     let imageDiv = document.createElement('div');
     imageDiv.classList.add('imgDiv');
@@ -85,6 +83,7 @@
   }
 
   function makeModal(item){
+    currentDirectoryCounter = item.id;
     let directoryId = item.id;
 
     let body = document.getElementById('body');
@@ -110,7 +109,7 @@
     modal.appendChild(closeCursor);
     modal.appendChild(modalContent);
 
-    item.images.forEach((item, blach) => addSlides(item, blach));
+    item.images.forEach((item) => addSlides(item));
     currentDirectoryCounter++;
 
     let next = document.createElement('a');
@@ -133,7 +132,7 @@
 
   function addSlides(item){
     let modalContent = document.getElementById(`myModalContent${currentDirectoryCounter}`);
-
+    if(modalContent !== null){
     let mySlides = document.createElement('div');
     mySlides.classList.add(`mySlides${currentDirectoryCounter}`);
 
@@ -145,6 +144,7 @@
 
     modalContent.appendChild(mySlides);
     mySlides.appendChild(i);
+  }
 
   }
 

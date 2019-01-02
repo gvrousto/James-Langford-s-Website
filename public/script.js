@@ -85,6 +85,7 @@
   }
 
   function makeModal(item){
+    currentDirectoryCounter = item.id;
     let directoryId = item.id;
 
     let body = document.getElementById('body');
