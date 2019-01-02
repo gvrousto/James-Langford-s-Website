@@ -1,5 +1,54 @@
 @media only screen and (max-width: 768px) {
+  .nav-column{
+    text-align: center;
+    margin-left: 80px;
+  }
 
+  #header-text{
+    font-size: 35px;
+  }
+
+  #header-text:hover{
+    cursor: pointer;
+  }
+
+  #buttonGroup{
+    display: block;
+  }
+
+  .icons{
+    display: none;
+  }
+
+  h3{
+    font-size: 15px;
+    display: block;
+  }
+
+  h3:hover {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .displayImg{
+    width: 350px;
+  }
+
+  .displayImg:hover {
+    cursor: zoom-in;
+  }
+
+  .main-content{
+    margin-left: 20px;
+    vertical-align: middle;
+    text-align: left;
+  }
+
+  .entire-container{
+    margin-top: 25px;
+    width: 350px;
+  }
 }
 @media only screen and (min-width: 768px) {
 .nav-column{
@@ -79,7 +128,7 @@ i:hover{
 }
 
 .displayImg{
-
+  width: 850px;
 }
 
 .displayImg:hover {
