@@ -77,6 +77,8 @@
       let b = document.createElement('BUTTON');
       let t = document.createTextNode("Purchase");       // Create a text node
       b.classList.add('purchaseButton');
+      b.classList.add('btn');
+      b.classList.add('btn-outline-dark');
       b.appendChild(t);
       b.onclick = () => {
         window.location.href = item.shopLink;

@@ -55,7 +55,7 @@
   }
 
   .main-content{
-    margin-left: 20px;
+    margin-left: 10px;
     vertical-align: middle;
     text-align: left;
   }
@@ -248,7 +248,6 @@ i:hover{
 }
 
 .main-content{
-  margin-left: 10px;
   vertical-align: middle;
   text-align: left;
 }
