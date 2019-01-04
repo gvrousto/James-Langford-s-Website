@@ -1,7 +1,7 @@
 @media only screen and (max-width: 768px) {
   .nav-column{
     text-align: center;
-    margin-left: 80px;
+    margin-left: 70px;
   }
 
   .purchaseButton:hover{
@@ -54,7 +54,7 @@
   }
 
   .main-content{
-    margin-left: 20px;
+    margin-left: 10px;
     vertical-align: middle;
     text-align: left;
   }
