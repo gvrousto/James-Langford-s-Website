@@ -10,7 +10,6 @@
 
   #sub-header-text{
     margin-top: 0px;
-    margin-left: 10px;
     font-size: 10px;
   }
 
@@ -135,7 +134,7 @@
     background-color: white;
     cursor: pointer;
     position: absolute;
-    top: 25%;
+    top: 32%;
     width: auto;
     padding: 5px;
     margin-top: -50px;
@@ -182,7 +181,7 @@
   .purchaseButton:hover{
     cursor: pointer;
   }
-  
+
   #mobile-buttons{
     display: none;
   }
@@ -337,7 +336,9 @@ i:hover{
 /* Next & previous buttons */
 .prev,
 .next {
+  opacity: .4;
   color: white;
+  background-color: white;
   cursor: pointer;
   position: absolute;
   top: 50%;
