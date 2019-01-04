@@ -181,6 +181,9 @@
 }
 @media only screen and (min-width: 768px) {
 
+  a .fa {
+  color: #777;
+  }
   .purchaseButton:hover{
     cursor: pointer;
   }
