@@ -4,6 +4,10 @@
     margin-left: 80px;
   }
 
+  .purchaseButton:hover{
+    cursor: pointer;
+  }
+
   #sub-header-text{
     margin-top: 0px;
     margin-left: 10px;
@@ -175,6 +179,10 @@
 }
 @media only screen and (min-width: 768px) {
 
+  .purchaseButton:hover{
+    cursor: pointer;
+  }
+  
   #mobile-buttons{
     display: none;
   }

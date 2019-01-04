@@ -73,7 +73,8 @@
     mainDiv.appendChild(imageDiv);
     if(item.shopLink.length !== 0){
       let b = document.createElement('BUTTON');
-      let t = document.createTextNode("CLICK ME");       // Create a text node
+      let t = document.createTextNode("Purchase");       // Create a text node
+      b.classList.add('purchaseButton');
       b.appendChild(t);
       b.onclick = () => {
         window.location.href = item.shopLink;
