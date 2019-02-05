@@ -198,6 +198,8 @@
 }
 
 .nav-text{
+  width: 20vw;
+  overflow-wrap: break-word;
   margin-top: 40px;
 }
 
@@ -240,7 +242,7 @@ i:hover{
 
 .entire-container{
   margin-top: 25px;
-  width: 850px;
+  width: 450px;
 }
 
 #buttonGroup{
@@ -267,7 +269,7 @@ i:hover{
 }
 
 .displayImg{
-  width: 850px;
+  width: 450px;
 }
 
 .displayImg:hover {

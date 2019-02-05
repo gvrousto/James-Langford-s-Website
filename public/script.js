@@ -144,7 +144,7 @@
 
     let i = document.createElement("img");
     i.src = item.src;
-    //i.setAttribute("style", "width:100%");
+    i.setAttribute("style", "width:100%");
 
 
     modalContent.appendChild(mySlides);
